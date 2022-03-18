@@ -16,6 +16,7 @@ public class AutorDAO extends DAO <Autor>{
         Autor autor = buscarAutorPorId(id);
         super.eliminar(autor);
     }
+    
      
     public Autor buscarAutorPorId(Integer id) throws Exception{
         conectar(); 

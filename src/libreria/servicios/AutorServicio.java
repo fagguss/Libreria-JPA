@@ -10,13 +10,10 @@ public class AutorServicio {
 
     private AutorDAO autorDAO;
     private Autor autor;
-    private Scanner leer;
-
 
     public AutorServicio() {
         this.autorDAO = new AutorDAO();
         this.autor = new Autor();
-        this.leer=new Scanner(System.in).useDelimiter("\n");
     }
 
     public AutorServicio(AutorDAO autorDAO, Autor autor) {
@@ -25,17 +22,36 @@ public class AutorServicio {
     }
 
     //Negocio
+    public void crearAutor(Autor autor) throws Exception {
+
+        try {
+            if (autor.getNombre() == null | autor.getNombre().trim().isEmpty()) {
+                throw new Exception("INGRESE NOMBRE VALIDO");
+            }
+
+//            if (autor.getAlta() == null | autor.getAlta().trim.isEmpty()) {
+//                throw new Exception("INGRESE ALTA VALIDO, true o false");
+//            }
+
+            autorDAO.guardar(autor);
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+            throw e; 
+        }
+
+    }
+
     public List<Autor> buscarAutorPorNombre(String nombre) throws Exception {
 
         try {
-            
-            if (nombre==null | nombre.trim().isEmpty()){
-                throw new Exception ("INGRESE NOMBRE VALIDO"); 
+
+            if (nombre == null | nombre.trim().isEmpty()) {
+                throw new Exception("INGRESE NOMBRE VALIDO");
             }
-            
+
             autor.setNombre(nombre);
-            
-            List<Autor> autores=new ArrayList(); 
+
+            List<Autor> autores = new ArrayList();
             autores = autorDAO.buscarAutorPorNombre(autor.getNombre());
 
             return autores;

@@ -17,16 +17,7 @@ public class Libreria {
     public static void main(String[] args) throws Exception {
     
         try{
-           
-          
 
-//            DAO dao = new DAO(); 
-//            dao.getClass();
-            
-//            Autor autor=new Autor(1, "JK Rowling", false);
-//            Editorial editorial=new Editorial(3, "Palos", false);
-//            Libro libro=new Libro(256, "Harry Potter", 2001, 3, 0, 3, false, autor,editorial); 
-            
             MenuLibreria menu=new MenuLibreria(); 
             menu.Menu();
             

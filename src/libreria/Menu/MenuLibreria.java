@@ -20,7 +20,9 @@ public class MenuLibreria {
 
             do {
                 System.out.println("********MENU*******");
-                System.out.println("1.Crear los métodos para dar de alta/bajo o editar dichas entidades. \n"
+                System.out.println("1.Ingresar libro. \n"
+                        + "2.Crear un autor. \n"
+                        + "3.Crear una editorial. \n"
                         + "2.Búsqueda de un Autor por nombre. \n"
                         + "3.Búsqueda de un libro por ISBN. \n"
                         + "4.Búsqueda de un libro por Título. \n"
@@ -33,15 +35,15 @@ public class MenuLibreria {
                 switch (opc) {
                     case 1:
                         System.out.println("");
-
+                        lecturaServicio.crearLibro();
                         break;
                     case 2:
                         System.out.println("");
-                        lecturaServicio.buscarAutorPorNombre();
+                        lecturaServicio.crearAutor();
                         break;
                     case 3:
                         System.out.println("");
-
+                        lecturaServicio.crearEditorial();
                         break;
                     case 4:
                         System.out.println("");
