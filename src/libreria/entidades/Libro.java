@@ -1,8 +1,4 @@
-
-
 package libreria.entidades;
-
-
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -12,25 +8,25 @@ import javax.persistence.ManyToOne;
 
 @Entity
 public class Libro {
-    
+
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long ISBN; 
-    private String titulo; 
-    private Integer anio; 
-    private Integer ejemplares; 
-    private Integer ejemplaresPrestados; 
-    private Integer ejemplaresRestantes; 
-    private Boolean alta; 
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long ISBN;
+    private String titulo;
+    private Integer anio;
+    private String ejemplares;
+    private String ejemplaresPrestados;
+    private String ejemplaresRestantes;
+    private Boolean alta;
     @ManyToOne
-    private Autor autor; 
+    private Autor autor;
     @ManyToOne
-    private Editorial editorial; 
+    private Editorial editorial;
 
     public Libro() {
     }
 
-    public Libro(long ISBN, String titulo, Integer anio, Integer ejemplares, Integer ejemplaresPrestados, Integer ejemplaresRestantes, Boolean alta, Autor autor, Editorial editorial) {
+    public Libro(long ISBN, String titulo, Integer anio, String ejemplares, String ejemplaresPrestados, String ejemplaresRestantes, Boolean alta, Autor autor, Editorial editorial) {
         this.ISBN = ISBN;
         this.titulo = titulo;
         this.anio = anio;
@@ -66,27 +62,27 @@ public class Libro {
         this.anio = anio;
     }
 
-    public Integer getEjemplares() {
+    public String getEjemplares() {
         return ejemplares;
     }
 
-    public void setEjemplares(Integer ejemplares) {
+    public void setEjemplares(String ejemplares) {
         this.ejemplares = ejemplares;
     }
 
-    public Integer getEjemplaresPrestados() {
+    public String getEjemplaresPrestados() {
         return ejemplaresPrestados;
     }
 
-    public void setEjemplaresPrestados(Integer ejemplaresPrestados) {
+    public void setEjemplaresPrestados(String ejemplaresPrestados) {
         this.ejemplaresPrestados = ejemplaresPrestados;
     }
 
-    public Integer getEjemplaresRestantes() {
+    public String getEjemplaresRestantes() {
         return ejemplaresRestantes;
     }
 
-    public void setEjemplaresRestantes(Integer ejemplaresRestantes) {
+    public void setEjemplaresRestantes(String ejemplaresRestantes) {
         this.ejemplaresRestantes = ejemplaresRestantes;
     }
 
@@ -118,6 +114,5 @@ public class Libro {
     public String toString() {
         return "Libro{" + "ISBN=" + ISBN + ", titulo=" + titulo + ", anio=" + anio + ", ejemplares=" + ejemplares + ", ejemplaresPrestados=" + ejemplaresPrestados + ", ejemplaresRestantes=" + ejemplaresRestantes + ", alta=" + alta + ", autor=" + autor + ", editorial=" + editorial + '}';
     }
-    
-    
+
 }

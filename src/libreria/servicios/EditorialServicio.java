@@ -1,31 +1,30 @@
 package libreria.servicios;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import libreria.entidades.Editorial;
 import libreria.persistencia.EditorialDAO;
 
 public class EditorialServicio {
 
     private EditorialDAO editorialDAO;
-    private Editorial editorial;
 
     public EditorialServicio() {
         this.editorialDAO = new EditorialDAO();
-        this.editorial = new Editorial();
     }
 
-    public void crearEditorial(Editorial editorial) throws Exception {
+    public void crearEditorial(String nombre, Boolean alta) throws Exception {
 
         try {
-            if (editorial.getNombre() == null | editorial.getNombre().trim().isEmpty()) {
+            if (nombre == null | nombre.trim().isEmpty()) {
                 throw new Exception("INGRESE NOMBRE VALIDO");
             }
 
-//            if (editorial.getAlta() == null | editorial.getAlta().trim().isEmpty()) {
-//                throw new Exception("INGRESE ALTA VALIDO, true o false");
-//            }
+            if (alta == null & alta != true & alta != false) {
+                throw new Exception("INGRESE ALTA VALIDO, true o false");
+            }
+
+            Editorial editorial = new Editorial();
+            editorial.setNombre(nombre);
+            editorial.setAlta(alta);
 
             editorialDAO.guardar(editorial);
         } catch (Exception e) {
@@ -35,20 +34,20 @@ public class EditorialServicio {
 
     }
 
-    public List<Editorial> buscarEditorialPorNombre(String nombre) throws Exception {
+    public Editorial buscarEditorialPorNombre(String nombre) throws Exception {
 
         try {
 
             if (nombre == null | nombre.trim().isEmpty()) {
                 throw new Exception("INGRESE NOMBRE VALIDO");
             }
-
+            
+            Editorial editorial=new Editorial(); 
             editorial.setNombre(nombre);
 
-            List<Editorial> editoriales = new ArrayList();
-            editoriales = editorialDAO.buscarEditorialPorNombre(editorial.getNombre());
+            editorial = editorialDAO.buscarEditorialPorNombre(editorial.getNombre());
 
-            return editoriales;
+            return editorialDAO.buscarEditorialPorNombre(nombre);
         } catch (Exception e) {
             System.out.println(e.getMessage());
             return null;

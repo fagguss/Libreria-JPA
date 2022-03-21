@@ -1,22 +1,24 @@
 package libreria.Menu;
 
 import java.util.Scanner;
+
 import libreria.servicios.MetodosLecturaServicio;
 
 public class MenuLibreria {
 
-    private MetodosLecturaServicio lecturaServicio; 
+    private MetodosLecturaServicio lecturaServicio;
 
     public MenuLibreria() {
-        this.lecturaServicio=new MetodosLecturaServicio(); 
+        this.lecturaServicio = new MetodosLecturaServicio();
+
     }
 
+    Scanner leer = new Scanner(System.in).useDelimiter("\n");
 
     public void Menu() throws Exception {
-        Scanner leer = new Scanner(System.in).useDelimiter("\n");
 
         try {
-            int opc=0;
+            int opc = 0;
 
             do {
                 System.out.println("********MENU*******");

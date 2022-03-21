@@ -26,12 +26,14 @@ public class EditorialDAO extends DAO<Editorial> {
         return editorial; 
     }
     
-     public List<Editorial> buscarEditorialPorNombre(String nombre) throws Exception{
+     public Editorial buscarEditorialPorNombre(String nombre) throws Exception{
         conectar(); 
-        List<Editorial> editoriales=em.createQuery("SELECT e FROM Editorial e WHERE e.nombre LIKE :nombre").setParameter("nombre",nombre).getResultList(); 
+        Editorial editorial=(Editorial) em.createQuery("SELECT e FROM Editorial e WHERE e.nombre LIKE :nombre").setParameter("nombre",nombre).getSingleResult(); 
+        //Otra forma mas simplificada ->
+        // Editorial editorial = em.find(Editorial.class, nombre); 
         desconectar(); 
         
-        return editoriales;
+        return editorial;
     }
     
     public List<Editorial> listarEditoriales() throws Exception{

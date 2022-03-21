@@ -21,55 +21,65 @@ public class MetodosLecturaServicio {
     }
 
     public void crearAutor() throws Exception {
-        Autor autor = new Autor();
+
         System.out.println("********AUTOR NUEVO*******");
         System.out.print("Nombre completo: ");
-        autor.setNombre(leer.next());
+        String nombre = leer.next();
         System.out.print("Alta: ");
-        autor.setAlta(leer.nextBoolean());
+        Boolean alta = leer.nextBoolean();
 
-        autorServicio.crearAutor(autor);
+        autorServicio.crearAutor(nombre, alta);
 
     }
 
+//    public void crearAutor() throws Exception {
+//        Autor autor = new Autor();
+//        System.out.println("********AUTOR NUEVO*******");
+//        System.out.print("Nombre completo: ");
+//        autor.setNombre(leer.next());
+//        System.out.print("Alta: ");
+//        autor.setAlta(leer.nextBoolean());
+//
+//        autorServicio.crearAutor(autor);
+//
+//    }
     public void crearEditorial() throws Exception {
-        Editorial editorial = new Editorial();
+
         System.out.println("********EDITORIAL NUEVA*******");
         System.out.print("Nombre completo: ");
-        editorial.setNombre(leer.next());
+        String nombre = leer.next();
         System.out.print("Alta: ");
-        editorial.setAlta(leer.nextBoolean());
+        Boolean alta = leer.nextBoolean();
 
-        editorialServicio.crearEditorial(editorial);
+        editorialServicio.crearEditorial(nombre, alta);
 
     }
 
     public void crearLibro() throws Exception {
-        Libro libro = new Libro();
         System.out.println("*****LIBRO NUEVO******");
         System.out.print("TITULO COMPLETO: ");
-        libro.setTitulo(leer.next());
+        String titulo = leer.next();
         System.out.print("AÑO DE PUBLICACIÓN: ");
-        libro.setAnio(leer.nextInt());
+        Integer anio = leer.nextInt();
 
         System.out.print("AUTOR: ");
         String autorNombre = leer.next();
-        libro.setAutor((Autor) autorServicio.buscarAutorPorNombre(autorNombre));
+        Autor autor=autorServicio.buscarAutorPorNombre(autorNombre);
 
         System.out.print("EDITORIAL: ");
         String editorialNombre = leer.next();
-        libro.setEditorial((Editorial) editorialServicio.buscarEditorialPorNombre(editorialNombre));
+        Editorial editorial=editorialServicio.buscarEditorialPorNombre(editorialNombre);
 
         System.out.print("ALTA: ");
-        libro.setAlta(leer.nextBoolean());
+        Boolean alta=leer.nextBoolean(); 
         System.out.print("EJEMPLARES: ");
-        libro.setEjemplares(leer.nextInt());
+        String ejemplares=leer.next();
         System.out.print("EJEMPLARES PRESTADOS: ");
-        libro.setEjemplaresPrestados(leer.nextInt());
+        String ejemplaresPrestados=leer.next(); 
         System.out.print("EJEMPLARES RESTANTES: ");
-        libro.setEjemplaresRestantes(leer.nextInt());
+        String ejemplaresRestantes =leer.next(); 
 
-        libroServicio.crearLibro(libro);
+        libroServicio.crearLibro(titulo,anio,autor,editorial,alta,ejemplares,ejemplaresPrestados,ejemplaresRestantes);
 
     }
 
